@@ -302,7 +302,7 @@
 
 <nav>
     <div class="logo">
-        <img src="/img/image (2).jpg" alt="Logo">
+        <img src="img/image (2).jpg" alt="Logo">
     </div>
 
     <ul class="nav-links" id="navLinks">
