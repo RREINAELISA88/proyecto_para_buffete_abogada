@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Despacho Jurídico ABC | Abogada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #090909;
+            padding-top: 150px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 150px;
+            padding: 20px 40px;
+            background: rgba(0,0,0,0.95);
+            display: flex;
+            color: white;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .logo img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .social-btn {
+            font-size: 22px;
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            padding: 10px;
+            border-radius: 50%;
+            transition: 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: #d4af37;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #d4af37;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 150px;
+                left: 0;
+                width: 100%;
+                background: #000;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                padding: 30px 0;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .social-btn {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            height: calc(100vh - 150px);
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f') 
+                center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .btn {
+            border: 2px solid #fff;
+            padding: 15px 30px;
+            background: #d4af37;
+            font-weight: bold;
+            transition: 0.3s;
+            color: #fff;
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        section {
+            padding: 90px 40px;
+        }
+
+        section h2 {
+            text-align: center;
+            color: #d4af37;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        section p {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* ABOUT */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: auto;
+            flex-wrap: wrap;
+        }
+
+        .about-photo {
+            width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .about-text {
+            flex: 1;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-photo {
+                width: 220px;
+            }
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(0,0,0,0.05);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            background: rgba(212,175,55,0.1);
+            transform: translateY(-5px);
+        }
+
+        /* CONTACT */
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .contact-form button {
+            background: #d4af37;
+            color: #000;
+            padding: 15px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #111;
+            padding: 40px 40px 20px;
+            color: #ccc;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-info h3 {
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">
+        <img src="/img/image (2).jpg" alt="Logo">
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#nosotros">Sobre Mi</a></li>
+        <li><a href="#areas">Áreas</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <a href="https://wa.me/34666777888" target="_blank" class="social-btn">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
+
+<section class="hero">
+    <div>
+        <h1>Abogada Especialista</h1>
+        <p>Compromiso, ética y defensa legal personalizada</p>
+        <a href="#contacto" class="btn">Solicitar Consulta</a>
+    </div>
+</section>
+
+<section id="nosotros">
+    <h2>Sobre Mi</h2>
+    <div class="about-content">
+        <img src="/img/IMG-20251222-WA0001 (2).webp" class="about-photo">
+        <div class="about-text">
+            Soy abogada especializada en derecho civil y familiar, con amplia experiencia en defensa jurídica personalizada y trato cercano al cliente.
+        </div>
+    </div>
+</section>
+
+<section id="areas">
+    <h2>Áreas de Práctica</h2>
+    <div class="grid">
+        <div class="card">Derecho Civil</div>
+        <div class="card">Derecho Familiar</div>
+        <div class="card">Derecho Penal</div>
+        <div class="card">Derecho Laboral</div>
+    </div>
+</section>
+
+<section id="servicios">
+    <h2>Servicios</h2>
+    <p>Asesoramiento legal, representación judicial, redacción de contratos y defensa jurídica integral.</p>
+</section>
+
+<section id="contacto">
+    <h2>Contacto</h2>
+    <form class="contact-form">
+        <input type="text" placeholder="Nombre" required>
+        <input type="email" placeholder="Correo Electrónico" required>
+        <textarea rows="5" placeholder="Mensaje" required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+    </form>
+</section>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-info">
+            <h3>Despacho Jurídico ABC</h3>
+            <p>Comprometidos con la justicia y la excelencia legal.</p>
+        </div>
+        <div class="footer-links">
+            <a href="#nosotros">Sobre Mi</a>
+            <a href="#areas">Áreas</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 Despacho Jurídico ABC | Todos los derechos reservados
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+    }
+</script>
+
+</body>
+</html>
